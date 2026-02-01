@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Love You Sapna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#fffaf3;
+      color:#333;
+      scroll-behavior:smooth;
+    }
+    section{padding:80px 10%;}
+    .hero{
+      height:100vh;
+      background:linear-gradient(rgba(255,183,77,0.85),rgba(255,204,128,0.85)),url('https://images.unsplash.com/photo-1518568814500-1f3a3cfa4b2a') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#4a2c00;
+    }
+    .hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:3.2rem;
+      margin-bottom:20px;
+      color:#ff7a00;
+    }
+    .hero p{font-size:1.1rem;max-width:700px;margin:auto;color:#5c3a00}
+
+    h2{
+      text-align:center;
+      font-size:2.2rem;
+      margin-bottom:40px;
+      color:#ff8c1a;
+    }
+
+    .card{
+      max-width:900px;
+      margin:auto;
+      background:#fff4e6;
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 15px 30px rgba(0,0,0,.08);
+      text-align:center;
+    }
+
+    .quotes p{
+      font-style:italic;
+      margin:20px 0;
+      color:#555;
+    }
+
+    .hearts{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .heart{
+      width:70px;height:70px;
+      background:#ff6b81;
+      transform:rotate(45deg);
+      position:relative;
+      cursor:pointer;
+      animation:pulse 1.5s infinite;
+    }
+    .heart::before,.heart::after{
+      content:'';
+      width:70px;height:70px;
+      background:#ff6b81;
+      border-radius:50%;
+      position:absolute;
+    }
+    .heart::before{top:-35px;left:0}
+    .heart::after{left:-35px;top:0}
+
+    @keyframes pulse{
+      0%{transform:rotate(45deg) scale(1)}
+      50%{transform:rotate(45deg) scale(1.1)}
+      100%{transform:rotate(45deg) scale(1)}
+    }
+
+    .message{
+      margin-top:30px;
+      font-size:1.1rem;
+      color:#ff4d6d;
+      min-height:40px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#fff1dc;
+      font-style:italic;
+      color:#7a4a00;
+    }
+
+    @media(max-width:768px){
+      .hero h1{font-size:2.2rem}
+      section{padding:60px 6%}
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div>
+      <h1>I love you, Sapna, till the end of eternity.</h1>
+      <p>Miles apart, yet every heartbeat of mine knows where it belongs — with you.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Our Love Across Miles</h2>
+    <div class="card">
+      <p>Distance never weakened us — it revealed our strength. Loving you from afar taught me patience, trust, and how powerful loyalty truly is.</p>
+      <p>You are loyal in a world that changes too quickly, and that is why loving you feels safe, real, and forever-worthy.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why You Are You</h2>
+    <div class="card">
+      <p>Your fashion sense is effortless — elegant without trying.</p>
+      <p>And when you wear those Kashmiri jhumkas, Sapna, time slows down just to admire you.</p>
+      <p>You don’t try to be pretty — you simply are.</p>
+    </div>
+  </section>
+
+  <section class="quotes">
+    <h2>Words From My Heart</h2>
+    <div class="card">
+      <p>“Distance means so little when someone means so much.”</p>
+      <p>“Loyal hearts don’t fear distance.”</p>
+      <p>“Forever didn’t scare me — until I met you and wanted it.”</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Love Points Challenge 🏆</h2>
+    <div class="card">
+      <p><strong>Round 1 (5 seconds): Tap as many hearts as you can</strong></p>
+      <button onclick="startTapGame()">Start Game</button>
+      <p class="message" id="tapScore"></p>
+      <hr style="margin:30px 0">
+      <p><strong>Round 2 (Quiz – 5 seconds)</strong></p>
+      <p>What do I admire most about Sapna?</p>
+      <button onclick="quizAnswerCompetitive(true)">Her loyalty 💎</button>
+      <button onclick="quizAnswerCompetitive(false)">Her smile</button>
+      <p class="message" id="quizScore"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Beat the Distance ⏱️</h2>
+    <div class="card">
+      <p>Slide to 100% before time runs out!</p>
+      <input type="range" min="0" max="100" value="0" id="distanceSlider" style="width:100%" oninput="slideLoveCompetitive(this.value)">
+      <p class="message" id="sliderMsg"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Open a Love Letter</h2>
+    <div class="card">
+      <div class="hearts">
+        <div class="heart" onclick="openLetter(0)"></div>
+        <div class="heart" onclick="openLetter(1)"></div>
+        <div class="heart" onclick="openLetter(2)"></div>
+      </div>
+      <p class="message" id="letterMsg"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tap a Heart 💖</h2>
+    <div class="card">
+      <div class="hearts">
+        <div class="heart" onclick="showMessage()"></div>
+        <div class="heart" onclick="showMessage()"></div>
+        <div class="heart" onclick="showMessage()"></div>
+      </div>
+      <div class="message" id="message"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>For You, Sapna</h2>
+    <div class="card">
+      <p>Sapna, loving you feels calm, warm, and certain. In a world of temporary emotions, you are my permanence. I promise loyalty, effort, and a love that grows stronger with time.</p>
+    </div>
+  </section>
+
+  <footer>
+    No matter how far you are, my love always finds its way to you.
+  </footer>
+
+  <script>
+    const messages = [
+      "Even miles away, you are my favorite place.",
+      "Sapna, you are my calm in every chaos.",
+      "Always you. Always us.",
+      "My heart chose you — again and again."
+    ];
+
+    const letters = [
+      "You are loyal — and that makes loving you easy.",
+      "Those Kashmiri jhumkas make elegance look effortless.",
+      "Forever feels real when I think of you."
+    ];
+    function showMessage(){
+      document.getElementById('message').innerText = messages[Math.floor(Math.random()*messages.length)];
+    }
+
+    let score = 0;
+    let taps = 0;
+    let tapTimer;
+
+    function startTapGame(){
+      taps = 0;
+      document.getElementById('tapScore').innerText = 'Go!';
+      tapTimer = setTimeout(endTapGame,5000);
+      document.body.onclick = countTap;
+    }
+
+    function countTap(){ taps++; }
+
+    function endTapGame(){
+      document.body.onclick = null;
+      score += taps;
+      document.getElementById('tapScore').innerText = `Hearts tapped: ${taps}`;
+    }
+
+    function quizAnswerCompetitive(correct){
+      if(correct){ score += 20; document.getElementById('quizScore').innerText = 'Correct 💖 +20 points'; }
+      else{ document.getElementById('quizScore').innerText = 'Wrong 😌 but still cute'; }
+    }
+
+    function slideLoveCompetitive(val){
+      if(val == 100){ score += 30; document.getElementById('sliderMsg').innerText = `You won! Total Score: ${score}`; }
+    }{
+      document.getElementById('quizMsg').innerText = correct
+        ? "Of course 💖 You know us perfectly."
+        : "Still cute, but my heart knows the truth.";
+    }
+
+    function slideLove(val){
+      if(val == 100){
+        document.getElementById('sliderMsg').innerText = "Miles fade when love is real.";
+      }
+    }
+
+    function openLetter(i){
+      document.getElementById('letterMsg').innerText = letters[i];
+    }
+  </script>
+
+</body>
+</html>
